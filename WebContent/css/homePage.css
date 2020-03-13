@@ -1,0 +1,781 @@
+* {
+    box-sizing: border-box;
+ }
+
+ body{
+     margin:0;
+     background-color: #f1f1f1;
+     overflow-y: scroll;
+ }
+
+ textarea{
+    font-family:"Arial", sans-serif;   
+}
+ 
+ #header{
+     background-color: #f1f1f1;
+     text-align: center;
+ 
+ }
+
+ #topnav-noUser, #topnav-User{
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    top:0;
+}
+
+#topnav-noUser a, #topnav-User a{
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 0.5em 1em;
+    text-decoration: none;
+  }
+  
+#topnav-noUser a:hover, #topnav-User a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#topnav-User span {
+    color: #f2f2f2;
+    text-align: center;
+    display: inline-block;
+    margin:0.5em 0.5em 0 0;
+    padding-left:0.5em;
+  }
+
+.column{
+    float:left;
+    padding: 0.1em;
+}
+
+#center{
+    width: 84em; 
+    /*width: 98.5vw;*/
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#center:after{
+    content:"";
+    display: table;
+    clear:both;
+}
+
+#sideBar-categories {
+    width:15%;
+    position: sticky;
+    top:0;
+}
+#sideBar-categories h2{
+    text-align:center;
+    padding-top:0.1em; 
+}
+
+
+#sideBar-categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border:1px solid black;
+    background-color: #696868;
+    
+}
+
+#sideBar-categories li {
+    text-align: center;
+    border-bottom: 1px solid black;
+
+
+}
+
+#sideBar-categories li :last-child {
+    border-bottom: none;
+}
+
+#sideBar-categories li a {
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color:black;
+
+  }
+
+#sideBar-categories li a:hover {
+    background-color: black;
+    color: white;
+}
+
+#main-div{
+    width:70%;
+    overflow: auto;
+}
+
+#main-div-work{
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#sideBar-options {
+    width:15%;
+    position: sticky;
+    top:0;
+}
+#sideBar-options h2{
+    text-align:center;
+    padding-top:0.1em; 
+}
+
+#sideBar-options ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border:1px solid black;
+    background-color: #696868;
+    
+}
+
+#sideBar-options li {
+    text-align: center;
+    border-bottom: 1px solid black;
+
+}
+
+#sideBar-options li :last-child {
+    border-bottom: none;
+}
+
+#sideBar-options li a {
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color:black;
+
+  }
+
+#sideBar-options li a:hover {
+    background-color: black;
+    color: white;
+    cursor:pointer;
+}
+
+/*Divs that show what a specific option does*/
+#main-div-table{
+    width:100%;
+}
+#table-ads{
+    width:100%;
+    border-collapse: collapse;
+}
+#table-ads th{
+    border:1px solid black;
+}
+
+#table-ads td{
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+
+}
+#table-ads td:nth-child(4){
+    text-align:center;
+}
+#table-ads tr:nth-child(even){
+    background-color: #b9b9b9;
+
+} 
+#table-ads tr:last-child{
+    border-bottom:1px solid black;
+
+} 
+
+#table-ads tr:hover{
+    cursor:pointer;
+    opacity:0.7;
+} 
+
+#table-ads img{
+    max-width: 100%;
+    height:auto;
+}
+
+
+/*Div that shows a specific ad*/
+#main-div-ad{ /*when we show details about a clicked ad; this div is inside main-div-work*/
+    width:100%;
+    background-color: #e0e0e0;
+    
+}
+
+#main-div-ad img{
+    float:left;
+    margin-top: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width:15em;
+    height:15em; 
+}
+
+#main-div-ad #pName{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow: auto;
+}
+
+#main-div-ad #pPrice{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+}
+
+#main-div-ad #pDescription{
+    width:60%;
+    height:4em;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow:auto;
+    word-break: normal;
+}
+
+#main-div-ad #pLikes,#main-div-ad #pDislikes{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+}
+
+#main-div-ad #pPDate{
+    clear:both;
+}
+
+#main-div-ad #pEDate,#main-div-ad #pPDate,#main-div-ad #pActive,#main-div-ad #pCity, #main-div-ad #pSeller{
+    width:70%;
+    text-align:left;
+    margin-top:0;
+    margin-bottom:0.5em;
+    margin-left:1em;
+}
+
+/*Buttons for a seller*/
+#main-div-ad #btnOrder,#main-div-ad #btnFavourite{
+    margin-left:1em;
+    margin-right:1em;
+    width:10em;
+    height:3em;
+}
+
+#main-div-ad #btnOrder{
+    color:white;
+    background-color: rgb(104, 212, 104);
+    border:none;
+}
+#main-div-ad #btnFavourite{
+    color:white;
+    background-color: rgb(18, 32, 223);
+    border:none;
+}
+#btnOrder:hover,#btnFavourite:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+/*Buttons for an admin*/
+#main-div-ad #btnEdit,#main-div-ad #btnDelete{
+    margin-left:1em;
+    margin-right:1em;
+    width:9em;
+    height:3em;
+}
+
+#main-div-ad #btnDelete{
+    color:white;
+    background-color: red;
+    border:none;
+}
+#main-div-ad #btnEdit{
+    color:white;
+    background-color: rgb(18, 32, 223);
+    border:none;
+}
+#btnEdit:hover,#btnDelete:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+/*Table of reviews*/
+#table-review, #ad-edit-table-review{
+    border:1px solid black;
+    width:100%;
+    border-collapse: collapse;
+}
+
+#table-review td, #ad-edit-table-review td{
+    border:1px solid black;
+    height:3em;
+    
+}
+#ad-edit-table-review td{
+    height:5em;
+    
+}
+#table-review td{
+    text-align:center;
+}
+#table-review tr:hover{
+    background-color:#b9b9b9;
+    cursor:pointer;  
+}
+
+#table-review img, #ad-edit-table-review img{
+    margin:0;
+    height:100%;
+    width:100%;
+}
+
+#btnBack{
+    width:5em;
+    height:2em;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    margin-left:39em;
+    /*margin-left:60%;*/
+    border:none;
+}
+#btnBack:hover{
+   opacity:0.7;
+   cursor:pointer;
+}
+/*The end of an ad's display*/
+
+#admin-main-div-new-category, #admin-main-div-edit-category{ 
+    width:60%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color:#cac8c8;
+    
+}
+
+#form-new-category, #form-edit-category{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#form-new-category table, #form-edit-category table{
+    width:100%;
+    
+}
+
+#form-new-category textarea, #form-edit-category textarea{
+    width:100%;
+    height: 5em;
+}
+
+#form-new-category input[type="text"], #form-edit-category input[type="text"]{
+    width:100%;
+}
+
+#form-new-category input[type="submit"], #form-edit-category input[type="submit"], #btnCancelEditCategory{
+    width:5em;
+    height:2em;
+    margin-left:2em;
+    margin-top:1em;
+    margin-bottom:1em;
+    background-color: #696868;
+    color: white;
+    border:none;
+    border-radius: 0.5em;
+
+}
+
+#form-new-category input[type="submit"]:hover,#form-edit-category input[type="submit"]:hover, #btnCancelEditCategory:hover{
+    opacity: 0.7;
+    cursor:pointer;
+    
+}
+
+#admin-main-div-edit-categories, #admin-main-div-change-type{
+    width:100%;
+    background-color: #e0e0e0;
+}
+
+#table-edit-categories, #table-change-type{
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+}
+
+#table-edit-categories th, #table-edit-categories td{
+     text-align: left;
+     padding:16px;
+
+}
+
+#table-edit-categories tr:nth-child(even), #table-change-type tr:nth-child(even){
+    background-color: #abb3e0
+}
+
+#table-edit-categories tr:hover, #table-change-type tr:hover{
+    opacity: 0.7;
+}
+
+#table-change-type th, #table-change-type td{
+    text-align: center;
+    padding:3px;
+}  
+
+.clickedFave{
+    opacity:0.7;
+}
+
+/*Div that shows a form for ad's update.*/
+#main-div-edit-ad{ 
+    width:100%;
+    background-color: #e0e0e0;
+    
+}
+
+#form-edit-ad{
+    width:60%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#form-edit-ad table{
+    width:100%;
+}
+
+#form-edit-ad table textarea{
+    width:100%;
+    height:5em;
+}
+
+#form-edit-ad input[type="submit"], #btnCancelEdit{
+    width:7em;
+    height:3em;
+    margin-left:7em;
+    margin-top:2em;
+    color:white;
+    background-color: #696868;
+
+}
+#form-edit-ad input[type="submit"]:hover, #btnCancelEdit:hover{
+      opacity:0.7;
+      cursor:pointer;
+}
+
+#form-edit-ad table input[type="text"], #form-edit-ad table input[type="number"]{
+    width:100%;
+}
+
+.btnDelReview{
+    background-color:red;
+    width:5em;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#main-div-search-ads{
+    width:100%;
+
+}
+
+#form-search-ads{
+    width:70%;
+    margin-right:auto;
+    margin-left:auto;
+}
+#form-search-ads table{
+    width:100%;
+}
+
+#form-search-ads table input[type="text"], #form-search-ads table input[type="number"] {
+    width:100%;
+}
+
+#form-search-ads table input[type="submit"] {
+    width:40%;
+    height:2em;
+}
+
+#search-table-ads{
+    width: 100%;
+}
+#search-table-ads td,#search-table-ads th{
+    border:1px solid black;
+}
+
+/*Prikaz forme za slanje poruke prodavcu na oglasu*/
+#a-send-message{
+    text-decoration: none;
+}
+#div-new-message-seller{
+    width:70%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color:white;
+}
+#form-new-message-seller, #form-new-message-seller table, #form-new-message-seller table input[type="text"], #form-new-message-seller table textarea{
+    width:100%;
+}
+#form-new-message-seller input[type="submit"], #btn-seller-msg-cancel{
+    width:6em;
+    height:2em;
+    margin-left:2em;
+    border:none;
+    border-radius: 0.5em;
+}
+#form-new-message-seller input[type="submit"]:hover, #btn-seller-msg-cancel:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+#form-new-message-seller input[type="submit"]{
+    background-color:rgb(64, 233, 64);
+}
+#btn-seller-msg-cancel{
+    background-color:rgb(243, 64, 64);
+}
+
+/*Div that shows a specific review.*/
+#div-review{
+    width:70%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color:#cac8c8;
+    padding:0.5em;
+}
+#div-review p{
+    margin-top:0.2em;
+    margin-bottom:0.2em;
+}
+#div-review img{
+    width:9em;
+    height:9em;
+    float:left;
+    margin-right:1em;
+    border:1px solid black;
+}
+#div-review button{
+    clear:both;
+    margin-left:2em;
+    margin-bottom:1em;
+    width:7em;
+    height:2em;
+    border:none;
+    border-radius: 0.5em;
+    background-color: #818181;
+}
+#div-review button:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+
+/*Div that shows sent and received messages*/
+#div-received-messages, #div-sent-messages{
+    width:90%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#table-received-messages, #table-sent-messages{
+    width:100%;
+    border-collapse: collapse;
+} 
+
+#table-received-messages td, #table-received-messages th, #table-sent-messages td, #table-sent-messages th{
+    border: 1px solid black;
+} 
+
+#table-received-messages tr:nth-child(even), #table-sent-messages tr:nth-child(even){
+    background-color: #c9c9c9;
+}
+#table-received-messages tr:hover, #table-sent-messages tr:hover{
+    cursor:pointer;
+    background-color: #b9b9b9;
+}
+
+#div-message, #div-message-sent{
+    width:80%;
+    background-color: white;
+    border: 2px solid #696868;
+    margin-right:auto;
+    margin-left:auto;
+
+}
+
+#btnReply, #btnEdit-sent{
+    height:2em;
+    width:6em;
+    margin-top:2em;
+    margin-left: 3em;
+    margin-bottom: 1em;
+    background-color: #b9b9b9;
+}
+
+#btnBack-received, #btnBack-sent{
+    height:2em;
+    width:6em;
+    margin-top:2em;
+    margin-left: 3em;
+    margin-bottom: 1em;
+    background-color: #b9b9b9;
+}
+
+#btnBack-received:hover,#btnReply:hover, #btnBack-sent:hover,#btnEdit:hover{
+    color:white;
+    background-color: #696868;
+    cursor:pointer;
+}
+
+#div-message p, #div-message-sent p{
+    margin-left:1em;
+
+}
+
+#div-reply, #div-edit{
+    width:70%;
+}
+#div-reply textarea, #div-edit textarea{
+    width:100%;
+    height:5em;
+    
+}
+#btnSend, #btnCancelSend, #btnConfirm, #btnCancelConfirm{
+    width:5em;
+    margin-left:1em;
+    margin-bottom:0.5em;
+}
+#btnSend:hover, #btnCancelSend:hover, #btnConfirm:hover, #btnCancelConfirm:hover{
+    opacity:0.7;
+}
+#btnConfirm{
+    background-color: rgb(93, 223, 93);
+}
+#btnCancelConfirm{
+    background-color: rgb(241, 88, 88);
+}
+
+/*Div that shows a form for sending a message.*/
+#div-new-message{
+    width:70%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: white;
+    border: 2px solid #696868;
+}
+
+#form-new-message{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#form-new-message table{
+    width:100%;
+}
+
+#form-new-message input[type="text"]{
+    width:100%;
+}
+
+#form-new-message textarea{
+    width:100%;
+    height:7em;
+}
+
+#form-new-message input[type="submit"], #new-msg-cancel{
+   width:5em;
+   margin:1em;
+}
+
+#form-new-message input[type="submit"]{
+    background-color: rgb(83, 214, 83);
+}
+#new-msg-cancel{
+    background-color: rgb(250, 94, 94);
+}
+
+#form-new-message input[type="submit"]:hover, #new-msg-cancel:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+/*Div that shows banned users.*/
+#div-banned-users{
+    width:90%;
+    background-color: #e0e0e0;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#table-banned-users{
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+}
+
+#table-banned-users th, #table-banned-users td{
+     border:1px solid black;
+
+}
+
+#table-banned-users tr:nth-child(even){
+    background-color: #abb3e0
+}
+
+#table-banned-users tr:hover{
+    opacity: 0.7;
+}
+
+#table-banned-users th, #table-banned-users td{
+    text-align: center;
+    padding:3px;
+}  
+
+/*Div that shows table of ads for update.*/
+#div-edit-ads{
+    width:90%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: #e0e0e0;
+}
+
+#table-edit-ads{
+    width:100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+}
+
+#table-edit-ads td, #table-edit-ads th{
+    border: 1px solid black;
+}
+
+#table-edit-ads tr:nth-child(even){
+    background-color: #abb3e0
+}
+
+#table-edit-ads tr:hover{
+    opacity: 0.7;
+    cursor:pointer;
+}
+
+

@@ -1,0 +1,825 @@
+* {
+   box-sizing: border-box;
+}
+body{
+    margin:0;
+    background-color: #f1f1f1; 
+    overflow-y: scroll; /*I added this to stop page from moving when a scroll bar appears*/
+}
+
+textarea{
+    font-family:"Arial", sans-serif;   
+}
+
+#header{
+    background-color: #f1f1f1;
+    text-align: center;
+
+}
+
+#topnav{
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    top:0;
+}
+
+#topnav a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 0.5em 1em;
+    text-decoration: none;
+  }
+  
+#topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.column{
+    float:left;
+    padding: 0.5em;
+}
+
+#sideBar{
+    width:20%;
+    position: sticky;
+    top:0;
+}
+#sideBar h2{
+    text-align:center;
+    padding-top:0.3em; 
+}
+
+#center{
+    width: 84em;
+    /*width: 98.5vw;*/
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#center:after{
+    content:"";
+    display: table;
+    clear:both;
+}
+
+#sideBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border:1px solid black;
+    background-color: #696868;
+    
+}
+
+
+#sideBar li {
+    text-align: center;
+    border-bottom: 1px solid black;
+
+
+}
+
+#sideBar li :last-child {
+    border-bottom: none;
+}
+
+#sideBar li a {
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color:black;
+
+  }
+
+#sideBar li a:hover {
+    background-color: black;
+    color: white;
+}
+
+#main{
+    width:80%;
+    overflow: auto;
+}
+
+#work{
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#div-ordered, #div-delivered, #div-favourite,#div-ads{
+    width:100%;
+}
+#table-ordered, #table-delivered,#table-favourite,#table-reviews,#table-ads{
+    width:100%;
+    border-collapse: collapse;
+}
+
+#table-ordered tr:hover, #table-delivered tr:hover,#table-favourite tr:hover,#table-reviews tr:hover,#table-ads tr:hover{
+    cursor:pointer;
+}
+#table-ordered th, #table-delivered th, #table-favourite th, #table-reviews th, #table-ads th{
+    border:1px solid black;
+}
+
+#table-ordered td, #table-delivered td, #table-favourite td, #table-reviews td, #table-ads td{
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+#table-ordered tr:nth-child(even), #table-delivered tr:nth-child(even), #table-favourite tr:nth-child(even), #table-reviews tr:nth-child(even),#table-ads tr:nth-child(even){
+    background-color: #b9b9b9;
+
+} 
+#table-ordered tr:last-child, #table-delivered tr:last-child, #table-favourite tr:last-child, #table-reviews tr:last-child, #table-ads tr:last-child{
+    border-bottom:1px solid black;
+
+} 
+
+#table-ordered img, #table-favourite img, #table-ads img{
+    max-width: 100%;
+    height:auto;
+}
+
+#table-ads td:nth-child(4),#table-ads td:nth-child(5){ /*Polje za status i cenu*/
+    text-align:center;
+  }
+
+.btnDelivered{
+    width:6em;
+    height:4em;
+    display:block;
+    margin:auto;
+    background-color: rgb(23, 199, 23);
+    border:none;
+    color:white;
+}
+
+.btnDelivered:hover{
+   cursor: pointer;
+   opacity: 0.8;
+}
+
+#table-delivered td, #table-favourite td{
+    text-align:center;
+}
+
+.btnRemove{
+    color:white;
+    background-color: red;
+    border:none;
+    border-radius: 0.3em;
+}
+
+.btnClicked{
+    opacity:0.3;
+}
+
+#btnOrder{
+    width:7em;
+    height:2em;
+    background-color: rgb(23, 199, 23);
+    border:none;
+    color:white;
+    margin-left:2em;
+    margin-top:1em;
+    margin-right:1em;
+    margin-bottom:1em;
+}
+
+
+/*Div that shows messages.*/
+#div-received-messages, #div-sent-messages{
+    width:85%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#table-received-messages, #table-sent-messages{
+    width:100%;
+    border-collapse: collapse;
+} 
+
+#table-received-messages td, #table-received-messages th, #table-sent-messages td, #table-sent-messages th{
+    border: 1px solid black;
+} 
+
+#table-received-messages tr:nth-child(even), #table-sent-messages tr:nth-child(even){
+    background-color: #c9c9c9;
+}
+#table-received-messages tr:hover, #table-sent-messages tr:hover{
+    cursor:pointer;
+    background-color: #b9b9b9;
+}
+
+#div-message, #div-message-sent{
+    width:80%;
+    background-color: white;
+    border: 2px solid #696868;
+    margin-right:auto;
+    margin-left:auto;
+
+}
+
+#btnReply, #btnEdit{
+    height:2em;
+    width:6em;
+    margin-top:2em;
+    margin-left: 3em;
+    margin-bottom: 1em;
+    background-color: #b9b9b9;
+}
+
+#btnBack-received, #btnBack-sent{
+    height:2em;
+    width:6em;
+    margin-top:2em;
+    margin-left: 3em;
+    margin-bottom: 1em;
+    background-color: #b9b9b9;
+}
+
+#btnBack-received:hover,#btnReply:hover, #btnBack-sent:hover,#btnEdit:hover{
+    color:white;
+    background-color: #696868;
+    cursor:pointer;
+}
+
+#div-message p, #div-message-sent p{
+    margin-left:1em;
+
+}
+
+#div-reply, #div-edit{
+    width:70%;
+}
+#div-reply textarea, #div-edit textarea{
+    width:100%;
+    height:5em;
+    
+}
+#btnSend, #btnCancelSend, #btnConfirm, #btnCancelConfirm{
+    width:5em;
+    margin-left:1em;
+    margin-bottom:0.5em;
+}
+#btnSend:hover, #btnCancelSend:hover, #btnConfirm:hover, #btnCancelConfirm:hover{
+    opacity:0.7;
+}
+#btnConfirm{
+    background-color: rgb(93, 223, 93);
+}
+#btnCancelConfirm{
+    background-color: rgb(241, 88, 88);
+}
+
+#div-new-message{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: white;
+    border: 2px solid #696868;
+}
+
+#form-new-message{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#form-new-message table{
+    width:100%;
+}
+
+#form-new-message input[type="text"]{
+    width:100%;
+}
+
+#form-new-message textarea{
+    width:100%;
+    height:7em;
+}
+
+#form-new-message input[type="submit"], #new-msg-cancel{
+   width:5em;
+   margin:1em;
+}
+
+#form-new-message input[type="submit"]{
+    background-color: rgb(83, 214, 83);
+}
+#new-msg-cancel{
+    background-color: rgb(250, 94, 94);
+}
+
+#form-new-message input[type="submit"]:hover, #new-msg-cancel:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+/*Div that shows a favorite and ordered ad on a customer's profile.*/
+#div-ad{
+    background-color: rgb(231, 233, 227);
+    border:1px solid rgb(180, 178, 178);
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#div-ad img{
+    float:left;
+    margin-top: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width:12em;
+    height:12em; 
+}
+
+#div-ad #pName{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow: auto;
+}
+
+#div-ad #pPrice{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+}
+
+#div-ad #pDescription{
+    width:60%;
+    height:4em;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow:auto;
+    word-break: normal;
+}
+
+#div-ad #pLikes{
+    clear:both;
+}
+
+#div-ad #pEDate,#div-ad #pPDate,#div-ad #pActive,#div-ad #pCity,#div-ad #pLikes,#div-ad #pDislikes, #div-ad #pSeller{
+    width:30%;
+    text-align:left;
+    margin-top:0;
+    margin-bottom:0.5em;
+    margin-left:1em;
+}
+
+
+#btnBack{
+    width:5em;
+    height:2em;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    margin-left:35em;
+    /*margin-left:60%;*/
+    cursor: pointer;
+}
+
+/*Div that shows details about an ad.*/
+#div-details-ad,#div-details-seller{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #cac8c8;
+}
+
+.div-1,.div-2{
+    width:100%;
+    margin-right:auto;
+    margin-left:auto;
+   
+}
+
+.div-1 p{
+    margin-left:1em;
+   
+}
+
+#div-details-ad button,#div-details-ad input[type="submit"], #div-details-seller button,#div-details-seller input[type="submit"] {
+    width:7em;
+    height:2em;
+    border:none;
+    border-radius: 0.5em;
+}
+
+#div-details-ad button:hover,#div-details-ad input[type="submit"]:hover, #div-details-seller button:hover,#div-details-seller input[type="submit"]:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+
+#form-new-review-ad,#form-new-review-seller{
+    width:100%;
+    
+    
+
+}
+#form-new-review-ad table, #form-new-review-seller table{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+
+}
+
+#form-new-review-ad input[type="text"], #form-new-review-ad textarea, #form-new-review-seller input[type="text"], #form-new-review-seller textarea{
+    width:100%;
+}
+
+#form-new-review-ad textarea, #form-new-review-seller textarea{
+    height:4em;
+}
+
+.btnLike,.btnDislike,.btnReview{
+    margin-right:1.5em;
+    margin-left:1em;
+}
+
+#btnReportAd{
+    margin-left:1em;
+    background-color:red;
+    width:4em;
+}
+
+#btnReportSeller{
+    margin-left:1em;
+    background-color:red;
+    width:4em;
+}
+
+.btnLike{
+    background-color: rgb(1, 105, 1);
+}
+.btnDislike{
+    background-color: rgb(248, 61, 61);
+}
+
+.btnReview{
+    background-color:#696868;
+}
+
+#btnBack-detailsAd, #btnBack-detailsSeller{
+    margin-left:15em;
+    /*margin-left:26%;*/
+    margin-top:0.3em;
+    background-color:#696868;
+   
+}
+
+/*Div that shows details about a review.*/
+#div-data-review-ad, #div-data-review-seller, #div-review,#div-ad-review{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#cac8c8;
+}
+
+#div-data-review-ad img, #div-data-review-seller img, #div-review img, #div-ad-review img{
+    width:7em;
+    height:7em;
+    float:left;
+    margin-right:1em;
+}
+#div-data-review-ad, #div-data-review-seller, #div-review, #div-ad-review{
+    padding:0.5em;
+}
+
+
+#div-data-review-ad button, #div-data-review-seller button, #div-review button, #div-ad-review button{
+    clear:both;
+    margin-left:2em;
+    margin-bottom:1em;
+    width:7em;
+    height:2em;
+    border:none;
+    border-radius: 0.5em;
+}
+
+#div-data-review-ad button:hover, #div-data-review-seller button:hover, #div-review button:hover, #div-ad-review button:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+    
+.btnDelete{
+    background-color:rgb(255, 80, 80);
+}
+.btnEdit{
+    background-color:rgb(50, 50, 252);
+}
+.btnCancel{
+    background-color:#696868;
+}
+
+/*Div that shows a form for a review update.*/
+#div-edit-review-ad, #div-edit-review-seller{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#cac8c8;
+}
+
+#form-edit-review-ad, #form-edit-review-seller{
+    width:100%;
+    
+
+}
+#form-edit-review-ad table, #form-edit-review-seller table{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+
+}
+
+#div-edit-review-ad button,#div-edit-review-ad input[type="submit"], #div-edit-review-seller button,#div-edit-review-seller input[type="submit"]{
+    width:7em;
+    height:2em;
+    border:none;
+    border-radius: 0.5em;
+}
+
+#div-edit-review-ad button:hover,#div-edit-review-ad input[type="submit"]:hover, #div-edit-review-seller button:hover,#div-edit-review-seller input[type="submit"]:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+#form-edit-review-ad input[type="text"], #form-edit-review-ad textarea, #form-edit-review-seller input[type="text"], #form-edit-review-seller textarea{
+    width:100%;
+}
+
+#form-edit-review-ad textarea, #form-edit-review-seller textarea{
+    height:4em;
+}
+
+#div-likes-dislikes{
+    width:80%;
+    margin-left: auto;
+    margin-right:auto;
+    background-color:#cac8c8;
+}
+
+#div-reviews{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+}
+#div-reviews td{
+    text-align:center;
+}
+
+#div-ads{
+    width:100%;
+}
+
+#btnFilter{
+    width:7em;
+    height:2em;
+    margin-bottom:1em;
+    background-color:#696868;
+    border:none;
+    border-radius: 0.5em;
+}
+#btnFilter:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+/*Div that shows a particular ad on seller's profile.*/
+#div-ad-seller{ /*when we show details about clicked ad; this div is inside main-div-work*/
+    width:80%;
+    background-color: #e0e0e0;
+    margin-right:auto;
+    margin-left:auto;
+    
+}
+
+#div-ad-seller img{
+    float:left;
+    margin-top: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width:13em;
+    height:13em; 
+}
+
+#div-ad-seller #pName-seller{
+    width:60%;
+    height:2.5em;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow: auto;
+}
+
+#div-ad-seller #pPrice-seller{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+}
+
+#div-ad-seller #pDescription-seller{
+    width:60%;
+    height:5.5em;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow:auto;
+    word-break: normal;
+}
+
+#div-ad-seller #pLikes-seller,#div-ad-seller #pDislikes-seller{
+    clear:both;
+    width:60%;
+    text-align:left;
+    margin-top:0;
+    margin-bottom:0.5em;
+    margin-left:1em;
+}
+
+#div-ad-seller #pEDate-seller,#div-ad-seller #pPDate-seller,#div-ad-seller #pActive-seller,#div-ad-seller #pCity-seller,#div-ad-seller #pStatus-seller, #pCategory-seller{
+    width:30%;
+    text-align:left;
+    margin-top:0;
+    margin-bottom:0.5em;
+    margin-left:1em;
+}
+
+#div-ad-seller #btnDeleteAd{
+    color:white;
+    background-color: red;
+    border:none;
+    width:7em;
+    height:2em;
+    margin-left:2em;
+    border-radius: 0.5em;
+}
+#div-ad-seller #btnEditAd{
+    color:white;
+    background-color: rgb(18, 32, 223);
+    border:none;
+    width:7em;
+    height:2em;
+    margin-left:2em;
+    border-radius: 0.5em;
+}
+
+#btnEditAd:hover,#btnDeleteAd:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+#table-ad-reviews{
+    border:1px solid black;
+    width:100%;
+}
+
+#table-ad-reviews tr:hover{
+    cursor:pointer;
+    background-color: #b9b9b9;
+}
+
+#table-ad-reviews td{
+    border:1px solid black;
+    height:5em;
+    
+}
+
+#btnBackAd{
+    width:5em;
+    height:2em;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    margin-top:1em;
+    margin-left:33em;
+    /*margin-left:60%;*/
+    cursor: pointer;
+}
+
+#div-edit-ad{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: #cac8c8;
+}
+
+#form-edit-ad{
+    width:100%;
+}
+
+#form-edit-ad table{
+    width:80%;
+}
+
+#form-edit-ad input[type="number"],#form-edit-ad input[type="text"], #form-edit-ad textarea{
+    width:100%;
+}
+
+#form-edit-ad textarea{
+    height:5em;
+}
+
+#form-edit-ad input[type="submit"], #form-edit-ad #btnCancelEdit{
+    width:7em;
+    height:2em;
+    margin-left:2em;
+    margin-top:1em;
+    margin-bottom:1em;
+    border-radius: 0.5em;
+    border:none;
+}
+
+#form-edit-ad input[type="submit"]:hover, #form-edit-ad #btnCancelEdit:hover{
+   cursor:pointer;
+   opacity:0.7;
+}
+
+#form-edit-ad input[type="submit"]{
+    background-color: rgba(51, 122, 214, 0.884);
+}
+
+#form-edit-ad #btnCancelEdit{
+    background-color: rgba(206, 54, 54, 0.87);
+}
+
+/*Div that shows a form for adding a new ad.*/
+#div-new-ad{
+    width:80%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: #c9c9c9;
+}
+
+#div-new-ad img{
+    float:left;
+    width:9.5em;
+    height:9.5em;
+}
+
+#form-new-ad{
+    width:100%;
+}
+#form-new-ad table{
+    width:80%;
+}
+
+#form-new-ad table td{
+    padding-left:1em;
+}
+
+#new-ad-name, #form-new-ad textarea{
+    width:80%;
+}
+
+#new-ad-price, #new-ad-edate{
+    width:30%;
+}
+#form-new-ad textarea{
+    height:5em;
+    font-family:"Arial", sans-serif;   
+}
+#form-new-ad input[type="submit"], #btnCancelNew{
+    width:6em;
+    height: 2em;
+    margin-left:2em;
+    margin-top:1em;
+    margin-bottom:1em;
+    margin-right:1em;
+    border-radius: 0.5em;
+    border:none;
+}
+#form-new-ad input[type="submit"]:hover, #btnCancelNew:hover{
+    cursor:pointer;
+    opacity:0.7;
+}
+#form-new-ad input[type="submit"]{
+    background-color: rgb(26, 206, 26);
+}
+#btnCancelNew{
+    background-color: rgb(230, 45, 45);
+}
+    
+.disabled {
+    pointer-events: none;
+    cursor: default;
+  }

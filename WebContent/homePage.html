@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/homePage.js"></script>
+<link rel="stylesheet" type="text/css" href="css/homePage.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HomePage</title>
+</head>
+<body>
+    <div id="header">
+    <h1>Shop online</h1>
+    </div>
+    <div id="topnav-noUser">
+        <a href="registration.html">Register</a>
+        <a href="login.html">Login</a>
+    </div>
+    <div id="topnav-User" hidden="true">
+            <span id="hello-user"></span>
+            <a id="a-logout" href="">Log out</a>
+            <a id="a-profile" href="">My Profile</a>
+        </div>
+    <div id="center">
+    <div class="column" id="sideBar-categories">
+        <h2>Categories</h2>
+        <ul id="ul-categories">
+        </ul>
+    </div>
+    <div class="column" id="main-div">
+       <div id="main-div-work">
+       <h2 align="center" id="main-title">Top 10 most popular ads</h2>
+       <!--Ovo je prikaz svih oglasa-->
+       <div id="main-div-table" hidden="true">
+           <table id="table-ads">
+               <thead>
+                   <tr>
+                       <th style="width:13%;">Photo</th>
+                       <th style="width:27%;">Name</th>
+                       <th style="width:35%;">Description</th>
+                       <th style="width:15%;">Price (EUR)</th>
+                   </tr>
+               </thead>
+               <tbody>                 
+               </tbody>
+           </table>
+       </div>
+       <!--Div that shows a specific ad.-->
+        <div id="main-div-ad" hidden="true"> 
+            <img id="main-div-ad-photo" src="" alt=""></img>
+            <p><button id="btnBack">Back</button></p>
+            <p id="pName"><b>Name: </b><span id="spanName"></span></p>
+            <p id="pPrice"><b>Price: </b><span id="spanPrice"></span><span> EUR</span></p>
+            <p id="pDescription"><b>Description: </b><span id="spanDesc"></span></p>
+            <p id="pLikes"><b>Likes: </b><span id="spanLikes"></span></p>
+            <p id="pDislikes"><b>Dislikes: </b><span id="spanDislikes"></span></p>
+            <p id="pPDate"><b>Posting date: </b><span id="spanPDate"></span></p>
+            <p id="pEDate"><b>Expiry date: </b><span id="spanEDate"></span></p>
+            <p id="pActive"><b>Active: </b><span id="spanActive"></span></p>
+            <p id="pCity"><b>City: </b><span id="spanCity"></span></p>
+            <p id="pSeller"><b>Seller: </b><span id="spanSeller"></span><a style="margin-left:0.5em;" hidden="true" id="a-send-message" href="">Send a message</a></p>
+            <button id="btnOrder" hidden="true">Order</button><button id="btnFavourite" hidden="true">Add to favourite</button>
+            <button id="btnEdit" hidden="true">Edit</button><button id="btnDelete" hidden="true">Delete</button>
+                <p style="margin-left:1em;"><b>Reviews:</b></p>
+                <hr>
+                <table id="table-review">
+                    <thead>
+                    <tr>
+                        <th width="15%">Reviewer</th>
+                        <th width="35%">Title</th>
+                        <th width="50%">Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>                                   
+                    </tbody>
+                </table>
+        </div>
+        <!--Div that shows a form for adding a new category.-->
+        <div id="admin-main-div-new-category" hidden="true">
+                <form id="form-new-category">
+                    <table>
+                        <tr><td>Name: </td>
+                         <td><input type="text" id="category-name"></td>
+                        </tr>
+                        <tr><td>Description: </td><td><textarea id="category-description"></textarea></td></tr>
+                    </table>
+                    <input type="submit" value="Create">
+                    <p id="msg-category" hidden="true"></p>
+                </form>
+         </div>
+         <!--Div that shows categories for update.-->
+         <div id="admin-main-div-edit-categories" hidden="true">
+                <table id="table-edit-categories">
+                     <thead>
+                         <tr>
+                             <th width="30%">Name</th>
+                             <th width="50%">Description</th>
+                             <th width="10%">Edit</th>
+                             <th width="10%">Delete</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                    
+                     </tbody>
+                </table>
+           </div> 
+           <!--Div that shows a form for a category update.-->
+           <div id="admin-main-div-edit-category" hidden="true">
+                <form id="form-edit-category">
+                    <table>
+                        <tr><td>Name: </td>
+                         <td><input type="text" id="edit-category-name"></td>
+                        </tr>
+                        <tr><td>Description: </td><td><textarea id="edit-category-description"></textarea></td></tr>
+                    </table>
+                    <input type="submit" value="Edit"><button type="button" id = "btnCancelEditCategory">Cancel</button>
+                    <p id="edit-msg-category" hidden="true"></p>
+                </form>
+         </div>  
+          <!--Div that shows users for the type change.-->
+         <div id="admin-main-div-change-type" hidden="true">
+                <table id="table-change-type">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Type</th>
+                            <th>Change</th>
+                            <th>Confirm</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+               </table>
+         </div> 
+         <!--Div that shows a form for an ad update.-->
+         <div id="main-div-edit-ad" hidden="true">
+             <img id="main-div-edit-ad-photo" src="" alt="No photo" style="width:10em;height:10em;float:left;border:1px solid black;">
+              <form id="form-edit-ad">
+                  <table>
+                      <tr><td>Name:</td><td><input id="ad-edit-name" type="text" required></td></tr>
+                      <tr><td>Price: </td><td><input style="width:97%" id="ad-edit-price" type="number" required><span>&euro;</span></td></tr>
+                      <tr><td>Description: </td><td><textarea id="ad-edit-description" form="form-edit-ad" required></textarea></td></tr>
+                      <tr><td>Posting date: </td><td><input id="ad-edit-pdate" type="text" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$" placeholder="dd/mm/yyyy" required></td></tr>
+                      <tr><td>Expiry date: </td><td><input id="ad-edit-edate" type="text" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$" placeholder="dd/mm/yyyy" required></td></tr>
+                      <tr><td>Is active: </td><td><input name="ad-edit-active" id="ad-edit-active-yes" type="radio" value="yes">Yes<input name="ad-edit-active"  id="ad-edit-active-no" type="radio" value="no">No</td></tr>
+                      <tr><td>City: </td><td><select id="ad-edit-city">
+                          <option value="Beograd">Beograd</option>
+                          <option value="Novi Sad">Novi Sad</option>
+                          <option value="Subotica">Subotica</option>
+                          <option value="Kragujevac">Kragujevac</option>
+                          <option value="Sombor">Sombor</option>
+                          <option value="Zrenjanin">Zrenjanin</option>
+                          <option value="Kraljevo">Kraljevo</option>
+                          <option value="Leskovac">Leskovac</option>
+                          <option value="Kikinda">Kikinda</option>
+                          <option value="Vranje">Vranje</option>
+                      </select></td></tr>
+                      <tr><td>Photo: </td><td><input type="file" id="ad-edit-photo"></td></tr>
+                      <tr><td>Category: </td><td><select id="ad-edit-new-category">
+                      </select></td></tr>
+                  </table>
+                  <input type="submit" value="Edit"><button type="button" id="btnCancelEdit">Cancel</button>
+                  <p id="ad-edit-msg" hidden="true"></p>
+              </form>
+              <p><b>Reviews:</b></p>
+                <hr>
+                <table id="ad-edit-table-review">
+                    <thead>
+                    <tr>
+                        <th width="16%">User</th>
+                        <th width="19%">Title</th>
+                        <th width="20%">Content</th>
+                        <th width="15%">Photo</th>
+                        <th width="10%">Description</th>
+                        <th width="10%">Agreement</th>
+                        <th width="10%">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>   
+                    </tbody>
+                </table>
+         </div>
+         <!--Div that shows a form for creating a new message from an ad.-->
+      <div id="div-new-message-seller" hidden="true">
+        <form id="form-new-message-seller"> 
+             <table>
+                 <tr><td>Title: </td><td><input type="text" id="seller-msg-title" placeholder="Enter a title of the message" required></td></tr>
+                 <tr><td>Content: </td><td><textarea id="seller-msg-content" placeholder="Write a message" required></textarea></td></tr>
+             </table>  
+             <input type="submit" value="Send"> <button type="button" id="btn-seller-msg-cancel">Cancel</button><span style="margin-left:0.5em;" hidden="true" id="msg-msg-seller"></span>
+             <p id="msg-msg-seller" hidden="true"></p>
+        </form>
+   </div>
+   <!--Div that shows a specific review.">
+    <h3 style="text-align:center;"><span id="review-title"></span></h3>
+    <img src="" alt="No photo">
+    <p style="background-color: rgb(230, 225, 225);overflow:auto;"><b>Reviewer: </b><span id="review-reviewer"></span></p>
+    <p style="height:5em;overflow:auto;background-color: rgb(230, 225, 225)"><b>Content: </b><span id="review-content"></span></p>
+    <p><b>True description: </b><span id="review-description"></span></p>
+    <p style="margin-bottom:0.5em;"><b>Agreement respected: </b><span id="review-agreement"></span></p>
+    <button id="btnBack-review" class="btnCancel">Back</button>
+  </div>
+  <!--Div that shows a form for creating a new message.-->
+  <div id="div-new-message" hidden="true">
+    <form id="form-new-message"> 
+         <table>
+             <tr><td>To: </td><td><input type="text" id="new-msg-to" placeholder="Enter a username" required></td></tr>
+             <tr><td>Ad's name: </td><td><input type="text" id="new-msg-adName" placeholder="Enter an ad's name"></td></tr>
+             <tr><td>Title: </td><td><input type="text" id="new-msg-title" placeholder="Enter a title of the message" required></td></tr>
+             <tr><td>Content: </td><td><textarea id="new-msg-content" placeholder="Write a message" required></textarea></td></tr>
+         </table>  
+         <input type="submit" value="Send"> <button type="button" id="new-msg-cancel">Cancel</button>
+         <p id="msg-msg-new" hidden="true"></p>
+    </form>
+   </div>
+   <!--Table of received messages-->
+   <div id="div-received-messages" hidden="true">
+    <table id="table-received-messages">
+        <thead>
+            <tr>
+                <th width="20%">Sender</th>
+                <th width="28%">Title</th>
+                <th width="30%">Ad</th>
+                <th width="22%">Date and time</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+  </div>
+  <!--Div that shows a received message.-->
+  <div id="div-message" hidden="true">
+    <h3 align="center" id="msg-title">Title</h3>
+    <p>From: <span id="msg-from"></span></p>
+    <p>To: <span id="msg-to"></span></p>
+    <p>Ad's name: <span id="msg-adName"></span></p>
+    <p>Date and time: <span id="msg-time"></span></p>
+    <p>Content: <span id="msg-content"></span></p>
+    <button id="btnReply">Reply</button><button id="btnBack-received">Back</button>
+    <div id="div-reply" hidden="true">
+        <textarea id="reply-message" placeholder="Write a message"></textarea>
+        <button id="btnSend">Send</button> <button id="btnCancelSend">Cancel</button> <span id="msg-msg"></span>
+    </div>
+     </div>
+     <!--Div that shows a table of sent messages.-->
+     <div id="div-sent-messages" hidden="true">
+        <table id="table-sent-messages">
+                <thead>
+                    <tr>
+                        <th width="15%">Recipient</th>
+                        <th width="25%">Title</th>
+                        <th width="25%">Ad</th>
+                        <th width="23%">Date and time</th>
+                        <th width="12%">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+   </div>
+   <!--Div that shows a sent message.-->
+   <div id="div-message-sent" hidden="true">
+        <h3 align="center" id="msg-sent-title"></h3>
+        <p>From: <span id="msg-sent-from"></span></p>
+        <p>To: <span id="msg-sent-to"></span></p>
+        <p>Ad's name: <span id="msg-sent-adName"></span></p>
+        <p>Date and time: <span id="msg-sent-time"></span></p>
+        <p>Content: <span id="msg-sent-content"></span></p>
+        <button id="btnEdit-sent">Edit</button><button id="btnBack-sent">Back</button>
+        <div id="div-edit" hidden="true">
+            <textarea id="edit-message" placeholder="Write a message"></textarea>
+            <button id="btnConfirm">Confirm</button> <button id="btnCancelConfirm">Cancel</button> <span id="msg-msg-sent"></span>
+        </div>
+  </div>
+  <!--Div that shows banned sellers.-->
+  <div id="div-banned-users" hidden='true'>
+      <table id="table-banned-users">
+          <thead>
+              <tr>
+                  <th width="20%">Username</th>
+                  <th width="30%">Name</th>
+                  <th width="30%">Surname</th>
+                  <th width="20%">Remove ban</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+  </div>
+  <!--Div that shows ads for update.-->
+  <div id="div-edit-ads" hidden="true">
+      <table id="table-edit-ads">
+          <thead>
+              <tr>
+                  <th width="30%">Name</th>
+                  <th width="40%">Description</th>
+                  <th width="30%">Category</th>
+              </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+      </table>
+  </div>
+    </div>
+    </div>
+    <div class="column" id="sideBar-options">
+        <h2>Options</h2>
+        <div id="nav-options">
+            <ul id="list-options" >
+                <li><a id="link-popular" href="">Top 10 most popular ads</a></li>
+                <li><a href="search.html">Search ads or users</a></li>
+            </ul>
+        </div>
+     </div>
+    </div>
+    
+</body>
+</html>

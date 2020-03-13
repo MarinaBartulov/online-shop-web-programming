@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/registration.js"></script>
+<link rel="stylesheet" type="text/css" href="css/registration.css">
+<title>Registration</title>
+</head>
+<body>
+    <div id="div-reg">
+    <h2 align="center">Registration</h2>
+    <form id="formReg" action="">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input placeholder="Enter Username" maxlength="15" type="text" id="username"></td>
+                <td id="msgUsername" class="msg"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input placeholder="Enter Password" type="password" id="password" minlength="8"></td>
+                <td id="msgPassword" class="msg"></td>
+            </tr>
+            <tr>
+                <td>Confirm password:</td>
+                 <td><input placeholder="Confirm password" type="password" id="passwordC"></td>
+                <td id="msgPasswordC" class="msg"></td>
+            </tr>
+            <tr>
+                <td>First name:</td>
+                <td><input placeholder="Enter First Name" type="text" id="name"></td>
+                <td id="msgName" class="msg"></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><input placeholder="Enter Last Name" type="text" id="surname"></td>
+                <td id="msgSurname" class="msg"></td>
+            </tr>
+            <tr>
+                <td>Phone number:</td>
+                <td><input placeholder="Enter Phone number" type="text" id="phoneNumber"></td>
+                <td id="msgPhoneNumber" class="msg"></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><select id="city"> 
+                    <option value=""></option>
+                    <option value="Beograd">Beograd</option>
+                    <option value="Novi Sad">Novi Sad</option>
+                    <option value="Subotica">Subotica</option>
+                    <option value="Kragujevac">Kragujevac</option>
+                    <option value="Sombor">Sombor</option>
+                    <option value="Zrenjanin">Zrenjanin</option>
+                    <option value="Kraljevo">Kraljevo</option>
+                    <option value="Leskovac">Leskovac</option>
+                    <option value="Kikinda">Kikinda</option>
+                    <option value="Vranje">Vranje</option>
+                </select></td>
+                <td id="msgCity" class="msg"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input placeholder="email@example.com" type="email" id="email" pattern="[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
+                <td id="msgEmail" class="msg"></td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center"><input class="submit" type="submit" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+    <a href="homePage.html">Back To Home Page.</a>
+</div>
+
+</body>
+</html>

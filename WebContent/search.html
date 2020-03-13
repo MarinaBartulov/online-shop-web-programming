@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/search.js"></script>
+<link rel="stylesheet" type="text/css" href="css/search.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search</title>
+</head>
+<body>
+    <div id="header">
+    <h1>Search ad or user</h1>
+    </div>
+    <div id="topnav-noUser">
+        <a id="a-register" href="registration.html">Register</a>
+        <a id="a-login" href="login.html">Login</a>
+        <a class="a-home" href="homePage.html">Home</a>
+    </div>
+    <div id="topnav-user-admin" hidden="true">
+            <a class="a-logout" href="">Log out</a>
+            <a class="a-home" href="homePage.html">Home</a>
+        </div>
+    <div id="topnav-user" hidden="true">
+            <a class="a-logout" href="">Log out</a>
+            <a id="a-profile" href="profile.html">My profile</a>
+            <a class="a-home" href="homePage.html">Home</a>
+        </div>
+    <div id="center">
+        <!--Left side of the page-->
+    <div class="column" id="div-search">
+        <h2 id="div-search-title">Choose what you want to search</h2>
+        <button id="btnSearch-user">Search user</button><button id="btnSearch-ad">Search ad</button>
+        <!--Div that shows a form for searching ads.-->
+        <div id="div-search-ad" hidden="true">
+            <h3 align="center">Searching ads...</h3>
+            <form id="form-ads">
+                <table id="form-table-ads">
+                    <tr><td>Name:</td><td><input id="ad-name" type="text" placeholder="Enter a name of an ad"></td></tr>
+                    <tr><td>Min price:</td><td><input id="minPrice" type="number" placeholder="Enter minimum price"></td></tr>
+                    <tr><td>Max price:</td><td><input id="maxPrice" type="number" placeholder="Enter maximum price"></td></tr>
+                    <tr><td>Min likes:</td><td><input id="minLikes" type="number" placeholder="Enter minimum likes"></td></tr>
+                    <tr><td>Max likes:</td><td><input id="maxLikes" type="number" placeholder="Enter maximum likes"></td></tr>
+                    <tr><td>Min date of expiry:</td><td><input id="minED" type="text" placeholder="dd/MM/yyyy" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$"></td></tr>
+                    <tr><td>Max date of expiry:</td><td><input id="maxED" type="text" placeholder="dd/MM/yyyy" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$"></td></tr>
+                    <tr><td>City:</td><td><select id="ad-city">
+                            <option value=""></option>
+                            <option value="Beograd">Beograd</option>
+                            <option value="Novi Sad">Novi Sad</option>
+                            <option value="Subotica">Subotica</option>
+                            <option value="Kragujevac">Kragujevac</option>
+                            <option value="Sombor">Sombor</option>
+                            <option value="Zrenjanin">Zrenjanin</option>
+                            <option value="Kraljevo">Kraljevo</option>
+                            <option value="Leskovac">Leskovac</option>
+                            <option value="Kikinda">Kikinda</option>
+                            <option value="Vranje">Vranje</option>
+                    </select></td></tr>
+                    <tr id="trStatus"><td>Status:</td><td><select id="status">
+                         <option value=""></option>
+                         <option value="New">New</option>
+                         <option value="In realization">In realization</option>
+                         <option value="Delivered">Delivered</option>
+                     </select></td></tr>
+                </table>
+                <input type="submit" value="Search"><input type="reset" value="Reset">
+            </form>
+            <p id="msg-search-ad" hidden="true"></p>
+    </div>
+    <!--Div that shows a form for searching users.-->
+    <div id="div-search-user" hidden="true">
+            <h3 align="center">Searching users...</h3>
+            <form id="form-users">
+                <table id="form-table-users">
+                    <tr><td>Name:</td><td><input id="user-name" type="text" placeholder="Enter a name of a user"></td></tr> 
+                    <tr><td>City:</td><td><select id="user-city">
+                            <option value=""></option>
+                            <option value="Beograd">Beograd</option>
+                            <option value="Novi Sad">Novi Sad</option>
+                            <option value="Subotica">Subotica</option>
+                            <option value="Kragujevac">Kragujevac</option>
+                            <option value="Sombor">Sombor</option>
+                            <option value="Zrenjanin">Zrenjanin</option>
+                            <option value="Kraljevo">Kraljevo</option>
+                            <option value="Leskovac">Leskovac</option>
+                            <option value="Kikinda">Kikinda</option>
+                            <option value="Vranje">Vranje</option>
+                    </select></td></tr>
+                </table>
+                <input type="submit" value="Search"><input type="reset" value="Reset">
+            </form>
+            <p id="msg-search-user" hidden="true"></p>
+    </div>
+    </div>
+    <!--Right side of the page-->
+    <div class="column" id="div-results">
+       <h2 align="center" id="title-result">Results:</h2>
+           <!--Div that shows a table of ads which are the result of searching.-->
+           <div id="div-table-ads" hidden="true">
+           <table id="table-ads">
+               <thead>
+                   <tr>
+                       <th style="width:15%;">Photo</th>
+                       <th style="width:27%;">Name</th>
+                       <th style="width:32%;">Description</th>
+                       <th style="width:16%;">Price</th>
+                   </tr>
+               </thead>
+               <tbody>              
+               </tbody>
+           </table>
+           </div>
+           <!--Div that shows a table of users which are the result of searching.-->
+           <div id="div-table-users" hidden="true">
+           <table id="table-users">
+                <thead>
+                    <tr>
+                        <th style="width:30%;">First name</th>
+                        <th style="width:30%;">Last name</th>
+                        <th style="width:20%;">Username</th>
+                        <th style="width:20%;">City</th>
+                    </tr>
+                </thead>
+                <tbody>              
+                </tbody>
+            </table>
+        </div>
+        <!--Div that shows a specific ad.-->
+        <div id="div-ad" hidden="true"> 
+                <img id="div-ad-photo" src="" alt=""></img>
+                <p><button id="btnBack">Back</button></p>
+                <p id="pName"><b>Name: </b><span id="spanName"></span></p>
+                <p id="pPrice"><b>Price: </b><span id="spanPrice"></span><span> EUR</span></p>
+                <p id="pDescription"><b>Description: </b><span id="spanDesc"></span></p>
+                <p id="pLikes"><b>Likes: </b><span id="spanLikes"></span></p>
+                <p id="pDislikes"><b>Dislikes: </b><span id="spanDislikes"></span></p>
+                <p id="pPDate"><b>Posting date: </b><span id="spanPDate"></span></p>
+                <p id="pEDate"><b>Expiry date: </b><span id="spanEDate"></span></p>
+                <p id="pActive"><b>Active: </b><span id="spanActive"></span></p>
+                <p id="pCity"><b>City: </b><span id="spanCity"></span></p>
+                <p id="pSeller"><b>Seller: </b><span id="spanSeller"></span><a style="margin-left:0.5em;" hidden="true" id="a-send-message" href="">Send a message</a></p>
+                <p id="pStatus"><b>Status: </b><span id="spanStatus"></span></p>
+                <button id="btnOrder" hidden="true">Order</button><button id="btnFavourite" hidden="true">Add to favourite</button>
+                <button id="btnEditAdmin" hidden="true">Edit</button><button id="btnDeleteAdmin" hidden="true">Delete</button>
+                <button id="btnEditSeller" hidden="true">Edit</button><button id="btnDeleteSeller" hidden="true">Delete</button>
+                    <p style="margin-left:1em;"><b>Reviews:</b></p>
+                    <hr>
+                    <table id="table-review">
+                        <thead>
+                        <tr>
+                            <th width="15%">Reviewer</th>
+                            <th width="35%">Title</th>
+                            <th width="50%">Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>                                   
+                        </tbody>
+                    </table>
+            </div>
+            <!--Div that shows a specific review.-->
+            <div id="div-review" hidden="true">
+                    <h3 style="text-align:center;"><span id="review-title"></span></h3>
+                    <img src="" alt="No photo">
+                    <p style="background-color: rgb(230, 225, 225);overflow:auto;"><b>Reviewer: </b><span id="review-reviewer"></span></p>
+                    <p style="height:5em;overflow:auto;background-color: rgb(230, 225, 225)"><b>Content: </b><span id="review-content"></span></p>
+                    <p><b>True description: </b><span id="review-description"></span></p>
+                    <p style="margin-bottom:0.5em;"><b>Agreement respected: </b><span id="review-agreement"></span></p>
+                    <button id="btnBack-review" class="btnCancel">Back</button>
+                  </div>
+            <!--Div that shows a form for updating an ad when an admin is logged in.-->
+            <div id="div-edit-ad-admin" hidden="true">
+                    <img id="div-edit-ad-admin-photo" src="" alt="No photo" style="width:8em;height:8em;float:left;border:1px solid black;">
+                     <form id="form-edit-ad-admin">
+                         <table>
+                             <tr><td>Name:</td><td><input id="ad-edit-admin-name" type="text" required></td></tr>
+                             <tr><td>Price: </td><td><input style="width:97%" id="ad-edit-admin-price" type="number" required><span>&euro;</span></td></tr>
+                             <tr><td>Description: </td><td><textarea id="ad-edit-admin-description" required></textarea></td></tr>
+                             <tr><td>Posting date: </td><td><input id="ad-edit-admin-pdate" type="text" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$" placeholder="dd/mm/yyyy" required></td></tr>
+                             <tr><td>Expiry date: </td><td><input id="ad-edit-admin-edate" type="text" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$" placeholder="dd/mm/yyyy" required></td></tr>
+                             <tr><td>Is active: </td><td><input name="ad-edit-admin-active" id="ad-edit-admin-active-yes" type="radio" value="yes">Yes<input name="ad-edit-admin-active"  id="ad-edit-admin-active-no" type="radio" value="no">No</td></tr>
+                             <tr><td>City: </td><td><select id="ad-edit-admin-city">
+                                <option value="Beograd">Beograd</option>
+                                <option value="Novi Sad">Novi Sad</option>
+                                <option value="Subotica">Subotica</option>
+                                <option value="Kragujevac">Kragujevac</option>
+                                <option value="Sombor">Sombor</option>
+                                <option value="Zrenjanin">Zrenjanin</option>
+                                <option value="Kraljevo">Kraljevo</option>
+                                <option value="Leskovac">Leskovac</option>
+                                <option value="Kikinda">Kikinda</option>
+                                <option value="Vranje">Vranje</option>
+                             </select></td></tr>
+                             <tr><td>Photo: </td><td><input type="file" id="ad-edit-admin-photo"></td></tr>
+                             <tr><td>Category: </td><td><select id="ad-edit-admin-new-category">
+                             </select></td></tr>
+                         </table>
+                         <input type="submit" value="Edit"><button type="button" id="btnCancelEdit-admin">Cancel</button>
+                         <p id="ad-edit-admin-msg" style="visibility: true"></p>
+                     </form>
+                     <p><b>Reviews:</b></p>
+                       <hr>
+                       <table id="ad-edit-admin-table-review">
+                           <thead>
+                           <tr>
+                               <th width="16%">User</th>
+                               <th width="19%">Title</th>
+                               <th width="20%">Content</th>
+                               <th width="15%">Photo</th>
+                               <th width="10%">Description</th>
+                               <th width="10%">Agreement</th>
+                               <th width="10%">Remove</th>
+                               </tr>
+                           </thead>
+                           <tbody>   
+                           </tbody>
+                       </table>
+                </div>
+            <!--Div that shows a form for updating an ad when a seller is logged in.-->
+            <div id="div-edit-ad-seller" hidden="true">
+                    <img src="images/Penguins.jpg" style="float:left;width:8em;height:8em;border:1px solid black;" alt="No photo">
+                    <form id="form-edit-ad-seller">
+                        <table>
+                            <tr><td>Name:</td><td><input id="ad-edit-seller-name" type="text" required></td></tr>
+                            <tr><td>Price: </td><td><input style="width:97%" id="ad-edit-seller-price" type="number" required><span>&euro;</span></td></tr>
+                            <tr><td>Description: </td><td><textarea form="form-edit-ad-seller" id="ad-edit-seller-description" required></textarea></td></tr>
+                            <tr><td>Is active: </td><td><input name="ad-edit-seller-active" id="ad-edit-seller-active-yes" type="radio" value="yes">Yes<input name="ad-edit-seller-active"  id="ad-edit-seller-active-no" type="radio" value="no">No</td></tr>
+                            <tr><td>City: </td><td><select id="ad-edit-seller-city">
+                                    <option value="Beograd">Beograd</option>
+                                    <option value="Novi Sad">Novi Sad</option>
+                                    <option value="Subotica">Subotica</option>
+                                    <option value="Kragujevac">Kragujevac</option>
+                                    <option value="Sombor">Sombor</option>
+                                    <option value="Zrenjanin">Zrenjanin</option>
+                                    <option value="Kraljevo">Kraljevo</option>
+                                    <option value="Leskovac">Leskovac</option>
+                                    <option value="Kikinda">Kikinda</option>
+                                    <option value="Vranje">Vranje</option>
+                            </select></td></tr>
+                            <tr><td>Photo: </td><td><input type="file" id="ad-edit-seller-photo"></td></tr>
+                            <tr><td>Category: </td><td><select id="ad-edit-seller-new-category">
+                            </select></td></tr>
+                        </table>
+                        <input type="submit" value="Edit"><button type="button" id="btnCancelEdit-seller">Cancel</button> <span id="msg-edit-ad-seller"></span>
+                        <p id="ad-edit-seller-msg" style="visibility: true"></p>
+                    </form>
+                </div> 
+            <!--Div that shows a specific user.-->
+            <div id="div-user" hidden="true">
+                    <h3  style="text-align:center;display:inline;margin-left:15.8em;">Details about user</h3>
+                    <button id="btnBack-detailsUser">Back</button>
+                    <p><b>Username: </b><span id="spanUser-username"></span></p>
+                    <p><b>First name: </b><span id="spanUser-name"></span></p>
+                    <p><b>Last name: </b><span id="spanUser-surname"></span></p>
+                    <p><b>Phone number: </b><span id="spanUser-phoneNumber"></span></p>
+                    <p><b>Email: </b><span id="spanUser-email"></span></p>
+                    <p><b>City: </b><span id="spanUser-city"></span></p>
+                    <p><b>Likes: </b><span id="spanUser-likes"></span></p>
+                    <p><b>Dislikes: </b><span id="spanUser-dislikes"></span></p>
+                    <p><b>Date of registration: </b><span id="spanUser-dateReg"></span></p>
+                    <p><b>Role: </b><span id="spanUser-role"></span></p>
+                    <table id="table-review-user">
+                        <caption><b>Reviews:</b></caption>
+                        <thead>
+                        <tr>
+                            <th width="15%">Reviewer</th>
+                            <th width="35%">Title</th>
+                            <th width="50%">Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>                                   
+                        </tbody>
+                    </table>
+            </div>       
+       </div>  
+    </div>
+
+</body>
+</html>

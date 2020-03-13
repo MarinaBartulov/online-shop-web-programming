@@ -1,0 +1,85 @@
+html {
+    height:100%;
+}
+body {
+    background-color: #f1f1f1;
+    height: 100%;
+    margin:0;
+    font-size:1em;
+    font-weight:bold;
+
+}
+
+#div-login {
+
+    width: 25em;
+    height:20em;
+    position:relative;
+    left:35%;
+    top:15%;
+
+    
+}
+
+h2{
+    border:2px soli #b9b9b9;
+    background-color: black;
+    color: white;
+    width:20%;
+    height:10%;
+    position:absolute;
+    top:5%;
+
+}
+
+#formLogin {
+    border:2px solid #b9b9b9;
+    background-color:  #b9b9b9;
+    position: absolute;
+    top:25%;
+    width:100%;
+    height:50%;
+}
+
+table{
+    border:2px solid black;
+    width:100%;
+    height:100%;
+}
+
+.msg {
+    color:red;
+}
+
+.submit {
+    width: 70%;
+    height: 50%;
+    border:2px solid #b9b9b9;
+    background-color: black;
+    color:white;
+ 
+ }
+
+ .submit:hover {
+    opacity:0.8;
+ 
+ }
+
+ td {
+     color:white;
+     height:2em;
+
+ }
+
+
+ #a-back {
+     position:absolute;
+     right: 0;
+     text-decoration: none;
+ }
+
+ #a-reg {
+    text-decoration: none;
+}
+
+ 

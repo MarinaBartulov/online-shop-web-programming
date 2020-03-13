@@ -1,0 +1,14 @@
+{
+  "1" : {
+    "id" : 1,
+    "ad" : "1",
+    "reviewer" : "pera",
+    "title" : "Great car",
+    "content" : "Excellent car, the battery lasts for three days.",
+    "photo" : "",
+    "descriptionTrue" : true,
+    "respectedAgreement" : true,
+    "deleted" : false,
+    "forAdOrSeller" : "ad"
+  }
+}

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/profile.js"></script>
+<link rel="stylesheet" type="text/css" href="css/profile.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile</title>
+</head>
+<body>
+    <div id="header">
+    <h1>Profile: <span id="title-name"></span></h1>
+    </div>
+    <div id="topnav">
+        <a id="a-logout" href="">Log out</a>
+        <a href="homePage.html">Home</a>
+    </div>
+    <div id="center">
+    <div class="column" id="sideBar">
+        <h2>Options</h2>
+        <ul id="ul-customer" hidden="true">
+            <li><a id="a-ordered" href="">Ordered ads</a></li>
+            <li><a id="a-delivered" href="">Delivered ads</a></li>
+            <li><a id="a-favourite" href="">Favorite ads</a></li>
+        </ul>
+        <ul id="ul-seller" hidden="true">
+            <li><a id="a-allAds" href="">All ads</a></li>
+            <li><a id="a-new-ad" href="">Create a new ad</a></li>
+            <li><a id="a-reviews" href="">Reviews</a></li>
+            <li><a id="a-likesDislikes" href="">Likes and Dislikes</a></li>    
+        </ul>
+        <ul id="ul-common" hidden="true">
+            <li><a id="a-received-messages" href="">Received messages</a></li>
+            <li><a id="a-sent-messages" href="">Sent messages</a></li>
+            <li><a id="a-compose-message" href="">Compose a message</a></li>
+        </ul>
+    </div>
+    <div class="column" id="main">
+       <div id="work">
+       <h2 align="center" id="currOption">Choose an option</h2>
+        <!--Div that shows ordered ads on a customer's profile.-->
+       <div id="div-ordered" hidden="true">
+           <table id="table-ordered">
+               <thead>
+                   <tr>
+                       <th style="width:13%;">Photo</th>
+                       <th style="width:27%;">Name</th>
+                       <th style="width:35%;">Description</th>
+                       <th style="width:15%;">Delivered</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   
+               </tbody>
+           </table>
+       </div>  
+       <!--Div that shows delivered ads on a customer's profile.-->
+       <div id="div-delivered" hidden="true">
+            <table id="table-delivered">
+                <thead>
+                    <tr>
+                     <th width="25%">Name</th>
+                     <th width="20%">Seller</th>
+                     <th width="20%">Delivery time</th>
+                     <th width="17%">About ad</th>
+                     <th width="18%">About seller</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>  
+       </div>
+       <!--Div that shows favorite ads on customer's profile.-->
+       <div id="div-favourite" hidden="true">
+           <table id="table-favourite">
+               <thead>
+               <tr>
+               <th width="13%">Photo</th>    
+               <th width="23%">Name</th>
+               <th width="37%">Description</th>
+               <th width="20%">Remove from Favorites</th>
+               <tr>
+               </thead>
+               <tbody></tbody>
+           </table>
+       </div>
+       <!--Div that shows an ordered and favorite ad.-->
+       <div id="div-ad" hidden="true">
+            <img src="images/Penguins.jpg" alt=""></img>
+            <p style="margin-top:0;margin-bottom:0;height:3.8em;"><button id="btnBack">Back</button></p>
+            <p id="pName"><b>Name: </b><span id="spanName"></span></p>
+            <p id="pPrice"><b>Price: </b><span id="spanPrice"></span><span> EUR</span></p>
+            <p id="pDescription"><b>Description: </b><span id="spanDesc"></span></p>
+            <p id="pLikes"><b>Likes: </b><span id="spanLikes"></span></p>
+            <p id="pDislikes"><b>Dislikes: </b><span id="spanDislikes"></span></p>
+            <p id="pPDate"><b>Posting date: </b><span id="spanPDate"></span></p>
+            <p id="pEDate"><b>Expiry date: </b><span id="spanEDate"></span></p>
+            <p id="pActive"><b>Active: </b><span id="spanActive"></span></p>
+            <p id="pCity"><b>City: </b><span id="spanCity"></span></p>
+            <p id="pSeller"><b>Seller: </b><span id="spanSeller"></span></p>
+            <button id="btnOrder" hidden="true">Order</button><span id="msg-order" hidden="true"></span>
+
+       </div>
+       <!--Div that shows details about an ad and a form for adding a new review.-->
+       <div id="div-details-ad" hidden="true">
+         <div class="div-1">
+           <h3 style="text-align:center;display:inline;margin-left:16.8em;">Details about ad </h3>
+           <button id="btnBack-detailsAd">Back</button>
+           <p>Name: <span id="spanAdName"></span></p>
+           <p>Description: <span id="spanAdDesc"></span></p>
+           <p>Price: <span id="spanAdPrice"></span></p>
+           <p>Likes: <span id="spanAdLikes"></span></p>
+           <p>Dislikes: <span id="spanAdDislikes"></span></p>
+           <p>Posting date: <span id="spanAdPDate"></span></p>
+           <p>Expiry date: <span id="spanAdEDate"></span></p>
+           <p>Active: <span id="spanAdActive"></span></p>
+           <p>City: <span id="spanAdCity"></span></p>
+           <p>Seller: <span id="spanAdSeller"></span></p>
+           <button id="btnReviewAd" class="btnReview">Add a review</button> <button class="btnLike" id="btnLikeAd">Like</button> <button id="btnDislikeAd" class="btnDislike">Dislike</button>
+           <span>Report this ad for invalid description. <button id="btnReportAd">Report</button></span>
+           <p id="msg-review-ad" hidden="true"></p>
+        </div>
+        <hr/>
+        <div id="div-new-review-ad" class="div-2" hidden="true">
+           <h3 style="text-align:center;">Write a review</h3>
+           <img  style="width:7em;height:7em;float:left;border:1px solid black;" src="" alt="Choose a photo">
+           <form id="form-new-review-ad">
+                <table>
+                    <tr><td width="30%">Title: </td><td><input type="text" id="title-review-ad" required></td></tr>
+                    <tr><td>Content: </td><td><textarea form="form-new-review-ad" id="content-review-ad" required></textarea></td></tr>
+                    <tr><td>True description: </td><td><input type="radio" name="desc-review-ad" value="yes" required>Yes <input type="radio" name="desc-review-ad" value="no">No</td></tr>
+                    <tr><td>Respected agreement: </td><td><input type="radio" name="agreement-review-ad" value="yes">Yes <input type="radio" name="agreement-review-ad" value="no">No</td></tr>
+                    <tr id="trPhoto"><td>Photo: </td><td><input type="file" id="photo-review-ad"></td></tr>
+                    <tr><td><input class="btnReview" type="submit" value="Add review"></td><td><button type="button" class="btnCancel" id="btnCancelNew-ad">Cancel</button></td></tr>
+                </table>
+            </form>
+        </div>
+       </div>
+       <!--Div that shows a review for an ad.-->
+        <div id="div-data-review-ad" hidden="true">
+                <h3 style="text-align:center;"><span id="review-title-ad"></span></h3>
+                <img src="" alt="No photo" style="border:1px solid black;">
+                <p>Content: <span id="review-content-ad"></span></p>
+                <p>True description: <span id="review-desc-ad"></span></p>
+                <p>Agreement respected: <span id="review-agreement-ad"></span></p>
+                <button id="btnEdit-review-ad" class="btnEdit">Edit</button><button id="btnDelete-review-ad" class="btnDelete">Delete</button><button id="btnBack-review-ad" class="btnCancel">Back</button>
+                <p hidden="true" id="msg-data-review-ad"></p>
+        </div>
+        <!--Div that shows a form for updating ad review.-->
+        <div id="div-edit-review-ad" hidden="true">
+                <h3 style="text-align:center;">Edit review</h3>
+                <img style="float:left;width:7em;height:7em;border:1px solid black;" alt="No photo">
+                <form id="form-edit-review-ad">
+                        <table>
+                            <tr><td width="30%">Title: </td><td><input type="text" id="title-edit-review-ad"></td></tr>
+                            <tr><td>Content: </td><td><textarea id="content-edit-review-ad"></textarea></td></tr>
+                            <tr><td>True description: </td><td><input type="radio" id="desc-edit-review-ad-yes" name="desc-edit-review-ad" value="yes">Yes <input type="radio" id="desc-edit-review-ad-no" name="desc-edit-review-ad" value="no">No</td></tr>
+                             <tr><td>Agreement respected: </td><td><input type="radio" id="agreement-edit-review-ad-yes" name="agreement-edit-review-ad" value="yes">Yes <input id="agreement-edit-review-ad-no" type="radio" name="agreement-edit-review-ad" value="no">No</td></tr>
+                            <tr id="trPhoto"><td>Photo: </td><td><input type="file" id="photo-edit-review-ad"></td></tr>
+                            <tr><td><input class="btnReview" type="submit" value="Edit review"></td><td><button type="button" class="btnCancel" id="btnCancelEdit-ad">Cancel</button></td></tr>
+                        </table>
+                    </form>
+                    <p hidden="true" id="msg-edit-review-ad"></p>
+        </div>
+        <!--Div that shows details about a seller and a form for adding a new review.-->
+        <div id="div-details-seller" hidden="true">
+            <div class="div-1">
+              <h3  style="text-align:center;display:inline;margin-left:15.8em;">Details about seller</h3>
+              <button id="btnBack-detailsSeller">Back</button>
+              <p>Username: <span id="spanUsername"></span></p>
+              <p>First name: <span id="spanSellerName"></span></p>
+              <p>Last name: <span id="spanSellerSurname"></span></p>
+              <p>Phone number: <span id="spanPhoneNumber"></span></p>
+              <p>Email: <span id="spanEmail"></span></p>
+              <p>City: <span id="spanSellerCity"></span></p>
+              <p>Likes: <span id="spanSellerLikes"></span></p>
+              <p>Dislikes: <span id="spanSellerDislikes"></span></p>
+              <p>Date of registration: <span id="spanDateReg"></span></p>
+              <button id="btnReviewSeller" class="btnReview">Add a review</button> <button class="btnLike" id="btnLikeSeller">Like</button> <button id="btnDislikeSeller" class="btnDislike">Dislike</button>
+              <span style="margin-left:4.3em;">Report this seller for fraud. <button id="btnReportSeller">Report</button></span>
+              <p id="msg-review-seller" hidden="true"></p>
+           </div>
+           <hr/>
+           <div id="div-new-review-seller" class="div-2" hidden="true">
+              <h3 style="text-align:center;">Write a review</h3>
+              <img  style="width:7em;height:7em;float:left;border:1px solid black;" src="" alt="Choose a photo">
+              <form id="form-new-review-seller">
+                   <table>
+                       <tr><td width="30%">Title: </td><td><input type="text" id="title-review-seller"></td></tr>
+                       <tr><td>Content: </td><td><textarea id="content-review-seller"></textarea></td></tr>
+                       <tr><td>True description: </td><td><input type="radio" name="desc-review-seller" value="yes">Yes <input type="radio" name="desc-review-seller" value="no">No</td></tr>
+                       <tr><td>Respected agreement: </td><td><input type="radio" name="agreement-review-seller" value="yes">Yes <input type="radio" name="agreement-review-seller" value="no">No</td></tr>
+                       <tr id="trPhoto"><td>Photo: </td><td><input type="file" id="photo-review-seller"></td></tr>
+                       <tr><td><input class="btnReview" type="submit" value="Add review"></td><td><button type="button" class="btnCancel" id="btnCancelNew-seller">Cancel</button></td></tr>
+                   </table>
+               </form>
+           </div>
+          </div>
+          <!--Div that shows a review about a seller.-->
+           <div id="div-data-review-seller" hidden="true">
+                   <h3 style="text-align:center;"><span id="review-title-seller"></span></h3>
+                   <img src="" alt="No photo" style="border:1px solid black;">
+                   <p>Content: <span id="review-content-seller"></span></p>
+                   <p>True description: <span id="review-desc-seller"></span></p>
+                   <p>Agreement respected: <span id="review-agreement-seller"></span></p>
+                   <button id="btnEdit-review-seller" class="btnEdit">Edit</button><button id="btnDelete-review-seller" class="btnDelete">Delete</button><button id="btnBack-review-seller" class="btnCancel">Back</button>
+                   <p hidden="true" id="msg-data-review-seller"></p>
+           </div>
+           <!--Div that shows a form for updating a review about a seller.-->
+           <div id="div-edit-review-seller" hidden="true">
+                   <h3 style="text-align:center;">Edit review</h3>
+                   <img src="" style="float:left;width:7em;height:7em;border:1px solid black;" alt="No photo">
+                   <form id="form-edit-review-seller">
+                           <table>
+                               <tr><td width="30%">Title: </td><td><input type="text" id="title-edit-review-seller"></td></tr>
+                               <tr><td>Content: </td><td><textarea id="content-edit-review-seller"></textarea></td></tr>
+                               <tr><td>True description: </td><td><input type="radio" id="desc-edit-review-seller-yes" name="desc-edit-review-seller" value="yes">Yes <input type="radio" id="desc-edit-review-seller-no" name="desc-edit-review-seller" value="no">No</td></tr>
+                                <tr><td>Respected agreement: </td><td><input type="radio" id="agreement-edit-review-seller-yes" name="agreement-edit-review-seller" value="yes">Yes <input type="radio" id="agreement-edit-review-seller-no" name="agreement-edit-review-seller" value="no">No</td></tr>
+                               <tr id="trPhoto"><td>Photo: </td><td><input type="file" id="photo-edit-review-seller"></td></tr>
+                               <tr><td><input class="btnReview" type="submit" value="Edit review"></td><td><button type="button" class="btnCancel" id="btnCancelEdit-seller">Cancel</button></td></tr>
+                           </table>
+                       </form>
+                       <p hidden="true" id="msg-edit-review-seller"></p>
+           </div>    
+       <!--Div that shows a table of received messages.-->
+       <div id="div-received-messages" hidden="true">
+           <table id="table-received-messages">
+               <thead>
+                   <tr>
+                       <th width="20%">Sender</th>
+                       <th width="28%">Title</th>
+                       <th width="30%">Ad</th>
+                       <th width="22%">Date and time</th>
+                   </tr>
+               </thead>
+               <tbody>
+
+               </tbody>
+           </table>
+       </div>
+       <!--Div that shows a received message.-->
+       <div id="div-message" hidden="true">
+           <h3 align="center" id="msg-title">Naslov</h3>
+           <p>From: <span id="msg-from"></span></p>
+           <p>To: <span id="msg-to"></span></p>
+           <p>Ad's name: <span id="msg-adName"></span></p>
+           <p>Date and time: <span id="msg-time"></span></p>
+           <p>Content: <span id="msg-content"></span></p>
+           <button id="btnReply">Reply</button><button id="btnBack-received">Back</button>
+           <div id="div-reply" hidden="true">
+               <textarea id="reply-message" placeholder="Write a message"></textarea>
+               <button id="btnSend">Send</button> <button id="btnCancelSend">Cancel</button> <span id="msg-msg"></span>
+           </div>
+       </div>
+       <!--Div that shows a table of sent messages.-->
+       <div id="div-sent-messages" hidden="true">
+            <table id="table-sent-messages">
+                    <thead>
+                        <tr>
+                            <th width="15%">Recipient</th>
+                            <th width="25%">Title</th>
+                            <th width="25%">Ad</th>
+                            <th width="23%">Date and time</th>
+                            <th width="12%">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+       </div>
+       <!--Div that shows a sent message.-->
+       <div id="div-message-sent" hidden="true">
+            <h3 align="center" id="msg-sent-title"></h3>
+            <p>From: <span id="msg-sent-from"></span></p>
+            <p>To: <span id="msg-sent-to"></span></p>
+            <p>Ad's name: <span id="msg-sent-adName"></span></p>
+            <p>Date and time: <span id="msg-sent-time"></span></p>
+            <p>Content: <span id="msg-sent-content"></span></p>
+            <button id="btnEdit">Edit</button><button id="btnBack-sent">Back</button>
+            <div id="div-edit" hidden="true">
+                <textarea id="edit-message" placeholder="Write a message"></textarea>
+                <button id="btnConfirm">Confirm</button> <button id="btnCancelConfirm">Cancel</button> <span id="msg-msg-sent"></span>
+            </div>
+      </div>
+      <!--Div that shows a form for creating a new message.-->
+      <div id="div-new-message" hidden="true">
+           <form id="form-new-message"> 
+                <table>
+                    <tr><td>To: </td><td><input type="text" id="new-msg-to" placeholder="Enter a username" required></td></tr>
+                    <tr><td>Ad's name: </td><td><input type="text" id="new-msg-adName" placeholder="Enter an ad's name"></td></tr>
+                    <tr><td>Title: </td><td><input type="text" id="new-msg-title" placeholder="Enter a title of the message" required></td></tr>
+                    <tr><td>Content: </td><td><textarea id="new-msg-content" placeholder="Write a message" required></textarea></td></tr>
+                </table>  
+                <input type="submit" value="Send"> <button type="button" id="new-msg-cancel">Cancel</button>
+                <p id="msg-msg-new" hidden="true"></p>
+           </form>
+      </div>
+      <!--Div that shows a seller's likes and dislikes.-->
+      <div id="div-likes-dislikes" hidden="true">
+          <h2 align="center">Number of likes: <span id="spanNumLikes"></span></h2>
+          <h2 align="center">Number of dislikes: <span id="spanNumDislikes"></span></h2>
+      </div>
+      <!--Div that shows a table of reviews on a seller's profile.-->
+      <div id="div-reviews" hidden="true">
+          <table id="table-reviews">
+                <thead>
+                    <tr>
+                        <th width="30%">Ad</th>
+                        <th width="30%">Reviewer</th>
+                        <th width="40%">Title</th>     
+                    </tr>
+                </thead>
+               <tbody>
+                </tbody>
+          </table>
+      </div>
+      <!--Div that shows a review about a seller on a seller's profile.-->
+      <div id="div-review" hidden="true">
+        <h3 style="text-align:center;"><span id="review-title"></span></h3>
+        <img src="images/Penguins.jpg" alt="No photo">
+        <p><b>Ad: </b><span id="review-adName"></span></p>
+        <p><b>Reviewer: </b><span id="review-reviewer"></span></p>
+        <p><b>Content: </b><span id="review-content"></span></p>
+        <p><b>True description: </b><span id="review-desc"></span></p>
+        <p><b>Agreement respected: </b><span id="review-agreement"></span></p>
+        <button id="btnBack-review" class="btnCancel">Back</button>
+      </div>
+      <!--Div that shows all ads on a seller's profile.-->
+      <div id="div-ads" hidden="true">
+        <p>Choose which ads you want to see: <select id="selectStatus">
+            <option value="All">All</option>
+            <option value="New">New</option>
+            <option value="In realization">In realization</option>
+            <option value="Delivered">Delivered</option>
+        </select></p>  
+        <button id="btnFilter">Filter</button>
+        <table id="table-ads">
+              <thead>
+                  <tr>
+                      <th width="15%">Photo</th>
+                      <th width="20%">Name</th>
+                      <th width="30%">Description</th>
+                      <th width="20%">Status</th>
+                      <th width="15%">Price (EUR)</th>
+                  </tr>
+              </thead>
+              <tbody>
+              </tbody>
+        </table>
+      </div>
+      <!--Div that shows a specific ad on a seller's profile.-->
+    <div id="div-ad-seller" hidden="true"> 
+        <img id="ad-photo" src="images/Penguins.jpg" alt=""></img>
+        <p><button id="btnBackAd">Back</button></p>
+        <p id="pName-seller"><b>Name: </b><span id="spanName-seller"></span></p>
+        <p id="pPrice-seller"><b>Price: </b><span id="spanPrice-seller"></span><span> EUR</span></p>
+        <p id="pDescription-seller"><b>Description: </b><span id="spanDesc-seller"></span></p>
+        <p id="pLikes-seller"><b>Likes: </b><span id="spanLikes-seller"></span></p>
+        <p id="pDislikes-seller"><b>Dislikes: </b><span id="spanDislikes-seller"></span></p>
+        <p id="pPDate-seller"><b>Posting date: </b><span id="spanPDate-seller"></span></p>
+        <p id="pEDate-seller"><b>Expiry date: </b><span id="spanEDate-seller"></span></p>
+        <p id="pActive-seller"><b>Active: </b><span id="spanActive-seller"></span></p>
+        <p id="pCity-seller"><b>City: </b><span id="spanCity-seller"></span></p>
+        <p id="pStatus-seller"><b>Status: </b><span id="spanStatus-seller"></span></p>
+        <p id="pCategory-seller"><b>Category: </b><span id="spanCategory-seller"></span></p>
+        <button id="btnEditAd">Edit</button><button id="btnDeleteAd" hidden="true">Delete</button>
+            <p><b>Reviews:</b></p>
+            <hr>
+            <table id="table-ad-reviews">
+                <thead>
+                <tr>
+                    <th width="20%">Reviewer</th>
+                    <th width="40%">Title</th>
+                    <th width="40%">Content</th>
+                    </tr>
+                </thead>
+                <tbody>      
+                </tbody>
+            </table>
+    </div>
+    <!--Div that shows a review about an ad on a seller's profile.-->
+    <div id="div-ad-review" hidden="true">
+        <h3 style="text-align:center;"><span id="review-ad-title"></span></h3>
+        <img src="images/Penguins.jpg" alt="No photo">
+        <p><b>Ad: </b><span id="review-ad-adName"></span></p>
+        <p><b>Reviewer: </b><span id="review-ad-reviewer"></span></p>
+        <p><b>Content: </b><span id="review-ad-content"></span></p>
+        <p><b>True description: </b><span id="review-ad-desc"></span></p>
+        <p><b>Agreement respected: </b><span id="review-ad-agreement"></span></p>
+        <button id="btnBack-ad-review" class="btnCancel">Back</button>
+    </div>
+    <!--Div that shows a form for updating an ad on a seller's profile.-->
+    <div id="div-edit-ad" hidden="true">
+        <img src="images/Penguins.jpg" style="float:left;width:9em;height:9em;border:1px solid black;" alt="No photo">
+        <form id="form-edit-ad">
+            <table>
+                <tr><td>Name:</td><td><input id="ad-edit-name" type="text" required></td></tr>
+                <tr><td>Price: </td><td><input style="width:97%" id="ad-edit-price" type="number" required><span>&euro;</span></td></tr>
+                <tr><td>Description: </td><td><textarea form="form-edit-ad" id="ad-edit-description" required></textarea></td></tr>
+                <tr><td>Is active: </td><td><input name="ad-edit-active" id="ad-edit-active-yes" type="radio" value="yes">Yes<input name="ad-edit-active"  id="ad-edit-active-no" type="radio" value="no">No</td></tr>
+                <tr><td>City: </td><td><select id="ad-edit-city">
+                        <option value="Beograd">Beograd</option>
+                        <option value="Novi Sad">Novi Sad</option>
+                        <option value="Subotica">Subotica</option>
+                        <option value="Kragujevac">Kragujevac</option>
+                        <option value="Sombor">Sombor</option>
+                        <option value="Zrenjanin">Zrenjanin</option>
+                        <option value="Kraljevo">Kraljevo</option>
+                        <option value="Leskovac">Leskovac</option>
+                        <option value="Kikinda">Kikinda</option>
+                        <option value="Vranje">Vranje</option>
+                </select></td></tr>
+                <tr><td>Photo: </td><td><input type="file" id="ad-edit-photo"></td></tr>
+                <tr><td>Category: </td><td><select id="ad-edit-new-category">
+                </select></td></tr>
+            </table>
+            <input type="submit" value="Edit"><button type="button" id="btnCancelEdit">Cancel</button> <span id="msg-edit-ad"></span>
+            <p id="ad-edit-msg" style="visibility: true"></p>
+        </form>
+    </div>
+    <!--Div that shows a form for creating a new ad.-->
+    <div id="div-new-ad" hidden="true">
+           <img src="" alt="Choose photo">
+        <form id="form-new-ad">
+            <table>
+               <tr><td>Name:</td><td><input type="text" id="new-ad-name" placeholder="Enter a name" required></td></tr>
+               <tr><td>Description:</td><td><textarea form="form-new-ad" id="new-ad-description" placeholder="Enter a description" required></textarea></td></tr>
+               <tr><td>Price:</td><td><input type="number" id="new-ad-price" placeholder="Enter a price" required><span>&euro;</span></td></tr>
+               <tr><td>Expiry date:</td><td><input type="text" id="new-ad-edate" pattern="^(([0-2][0-9])|(3[0-1]))(\/)((0[1-9])|(1[0-2]))(\/)\d{4}$" placeholder="dd/mm/yyyy" required></td></tr>
+               <tr><td>Is active:</td><td><input type="radio" name="new-ad-active" value="yes" required>Yes <input type="radio" name="new-ad-active" value="no">No</td></tr>
+               <tr><td>City:</td><td><select id="new-ad-city" required>
+                   <option value="none"></option><option value="Beograd">Beograd</option><option value="Novi Sad">Novi Sad</option>
+                   <option value="Subotica">Subotica</option><option value="Kragujevac">Kragujevac</option><option value="Sombor">Sombor</option>
+                   <option value="Zrenjanin">Zrenjanin</option><option value="Kraljevo">Kraljevo</option><option value="Leskovac">Leskovac</option>
+                   <option value="Kikinda">Kikinda</option><option value="Vranje">Vranje</option>
+               </select></td></tr>
+               <tr><td>Category:</td><td><select id="new-ad-category" required></select></td></tr>
+               <tr><td>Photo:</td><td><input type="file" id="new-ad-photo" required></td></tr>
+            </table>
+            <input type="submit" value="Create"><button type="button" id="btnCancelNew">Cancel</button><span id="msg-new-ad" hidden="true"></span>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

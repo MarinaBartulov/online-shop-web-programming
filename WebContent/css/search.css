@@ -1,0 +1,494 @@
+* {
+    box-sizing: border-box;
+ }
+ body{
+     margin:0;
+     background-color: #f1f1f1;
+     overflow-y: scroll; 
+ }
+
+textarea{
+    font-family:"Arial", sans-serif;   
+}
+ 
+ #header{
+     background-color: #f1f1f1;
+     text-align: center;
+ 
+ }
+ 
+ #topnav-noUser, #topnav-user-admin,#topnav-user{
+     overflow: hidden;
+     background-color: #333;
+     position: sticky;
+     top:0;
+ }
+ 
+ #topnav-noUser a, #topnav-user-admin a,#topnav-user a{
+     float: right;
+     display: block;
+     color: #f2f2f2;
+     text-align: center;
+     padding: 0.5em 1em;
+     text-decoration: none;
+   }
+   
+   #topnav-noUser a:hover, #topnav-user-admin a:hover,#topnav-user a:hover{
+     background-color: #ddd;
+     color: black;
+ }
+
+ #center{
+    width:84em;
+    /*width: 98.5vw;*/
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#center:after{
+    content:"";
+    display: table;
+    clear:both;
+}
+ 
+ .column{
+     float:left;
+     padding: 0.5em;
+ }
+ 
+ #div-search{
+     width:40%;
+     position: sticky;
+     top:0;
+     
+ }
+ #div-search-title{
+     text-align:center;
+     padding-top:0.3em; 
+ }
+
+ #btnSearch-user, #btnSearch-ad{
+     margin-left:3em;
+     margin-bottom:1em;
+     height:2em;
+     width:7em;
+     border:none;
+     border-radius: 0.5em;
+     background-color: #b9b9b9;
+     
+ }
+
+ #btnSearch-user:hover, #btnSearch-ad:hover{
+    opacity:0.7;
+    cursor:pointer;
+    
+}
+#div-search-ad, #div-search-user{
+    width:100%;
+    background-color: #ddd;
+}
+
+#form-ads, #form-users {
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+#form-ads table, #form-users table{
+    width:100%;
+}
+
+#div-results{
+     width:60%;
+     margin-left:auto;
+     margin-right:auto;
+     overflow: auto;
+ }
+
+ #div-table-ads, #div-table-users{
+     width:100%;
+     background-color: #ddd;
+ }
+
+ #table-ads, #table-users{
+     width:100%;
+     border-collapse: collapse;
+ }
+ #table-ads th, #table-users th{
+     border:1px solid black;
+ }
+ #table-ads td, #table-users td{
+ 
+     border-left: 1px solid black;
+     border-right: 1px solid black;
+ }
+ #table-ads tr:nth-child(even), #table-users tr:nth-child(even){
+     background-color: #b9b9b9;
+ } 
+ #table-ads tr:last-child, #table-users tr:last-child{
+     border-bottom:1px solid black;
+ } 
+ #table-ads tr:hover, #table-users tr:hover{
+    opacity:0.7;
+    cursor:pointer;
+} 
+ 
+ #table-ads img{
+     max-width: 100%;
+     height:auto;
+ }
+ input{
+     border-radius: 0.4em;
+ }
+ input[type="text"], input[type="number"]{
+     width:100%;
+ }
+ input[type="submit"]{
+    margin-left:7em;
+    margin-top:2em;
+    margin-bottom:1em;
+    width:8em;
+    height:3em;
+    background-color: green;
+    color:honeydew;
+    border:none;
+    border-radius: 0.5em;
+ }
+ input[type="reset"]{
+    margin-left:5em;
+    margin-top:2em;
+    margin-bottom:1em;
+    width:8em;
+    height:3em;
+    background-color: red;
+    color:honeydew;
+    border:none;
+    border-radius: 0.5em;
+ }
+
+ input[type="submit"]:hover, input[type="reset"]:hover{
+    opacity: 0.7;
+    cursor:pointer;
+ }
+
+ #msg{
+    font-size: 2.5em;
+    clear:both;
+    text-align: center;
+    color:red;
+ }
+
+ .clicked{
+     opacity:0.7;
+ }
+
+ /*Div that shows a specific ad.*/
+#div-ad{ /*when we show details about a clicked ad; this div is inside main-div-work*/
+    width:90%;
+    background-color: #e0e0e0;
+    margin-right:auto;
+    margin-left:auto;
+    
+}
+
+#div-ad img{
+    float:left;
+    margin-top: 0;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width:12em;
+    height:12em; 
+}
+
+#div-ad #pName{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow: auto;
+}
+
+#div-ad #pPrice{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+}
+
+#div-ad #pDescription{
+    width:60%;
+    height:4em;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+    overflow:auto;
+    word-break: normal;
+}
+
+#div-ad #pLikes,#div-ad #pDislikes{
+    width:60%;
+    text-align:left;
+    display:inline-block;
+    margin-top:0;
+    margin-bottom:0.5em;
+}
+
+#div-ad #pPDate{
+    clear:both;
+}
+
+#div-ad #pEDate,#div-ad #pPDate,#div-ad #pActive,#div-ad #pCity, #div-ad #pSeller, #div-ad #pStatus{
+    width:70%;
+    text-align:left;
+    margin-top:0;
+    margin-bottom:0.5em;
+    margin-left:1em;
+}
+
+/*Buttons for a seller.*/
+#div-ad #btnOrder,#div-ad #btnFavourite{
+    margin-left:1em;
+    margin-right:1em;
+    width:10em;
+    height:3em;
+}
+
+#div-ad #btnOrder{
+    color:white;
+    background-color: rgb(104, 212, 104);
+    border:none;
+}
+#div-ad #btnFavourite{
+    color:white;
+    background-color: rgb(18, 32, 223);
+    border:none;
+}
+#btnOrder:hover,#btnFavourite:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+/*Buttons for an admin.*/
+#div-ad #btnEditAdmin, #div-ad #btnEditSeller, #div-ad #btnDeleteAdmin, #div-ad #btnDeleteSeller{
+    margin-left:1em;
+    margin-right:1em;
+    width:9em;
+    height:3em;
+}
+
+#div-ad #btnDeleteAdmin, #div-ad #btnDeleteSeller{
+    color:white;
+    background-color: red;
+    border:none;
+}
+#div-ad #btnEditAdmin, #div-ad #btnEditSeller{
+    color:white;
+    background-color: rgb(18, 32, 223);
+    border:none;
+}
+#btnEditAdmin:hover, #btnEditSeller:hover, #btnDeleteAdmin:hover, #btnDeleteSeller:hover{
+    opacity:0.8;
+    cursor: pointer;
+}
+
+/*Table of reviews*/
+#table-review, #ad-edit-admin-table-review, #table-review-user{
+    border:1px solid black;
+    width:100%;
+    border-collapse: collapse;
+}
+
+#table-review td, #ad-edit-admin-table-review td, #table-review-user td{
+    border:1px solid black;
+    height:3em;
+    
+}
+#table-review td{
+    text-align:center;
+}
+#table-review tr:hover, #table-review-user tr:hover{
+    background-color:#b9b9b9;
+    cursor:pointer;  
+}
+
+#ad-edit-admin-table-review td{
+    height:5em;
+    
+}
+#ad-edit-admin-table-review img{
+    margin:0;
+    height:100%;
+    width:100%;
+}
+
+#btnBack{
+    width:5em;
+    height:2em;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    margin-left:32em;
+    /*margin-left:60%;*/
+    border:none;
+}
+#btnBack:hover{
+   opacity:0.7;
+   cursor:pointer;
+}
+
+/*Div that shows a specific review.*/
+#div-review{
+    width:70%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color:#cac8c8;
+    padding:0.5em;
+}
+#div-review p{
+    margin-top:0.2em;
+    margin-bottom:0.2em;
+}
+#div-review img{
+    width:9em;
+    height:9em;
+    float:left;
+    margin-right:1em;
+    border:1px solid black;
+}
+#div-review button{
+    clear:both;
+    margin-left:2em;
+    margin-bottom:1em;
+    width:7em;
+    height:2em;
+    border:none;
+    border-radius: 0.5em;
+    background-color: #818181;
+}
+#div-review button:hover{
+    opacity:0.7;
+    cursor:pointer;
+}
+
+/*Div that shows a form for an ad update on an admin's profile.*/
+#div-edit-ad-admin{ 
+    width:90%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: #cac8c8;
+
+}
+
+#form-edit-ad-admin{
+    width:100%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+#form-edit-ad-admin table{
+    width:80%;
+}
+
+#form-edit-ad-admin table textarea{
+    width:100%;
+    height:5em;
+}
+
+#form-edit-ad-admin input[type="submit"], #btnCancelEdit-admin{
+    width:7em;
+    height:3em;
+    margin-left:7em;
+    margin-top:2em;
+    color:white;
+    background-color: #696868;
+
+}
+#form-edit-ad-admin input[type="submit"]:hover, #btnCancelEdit-admin:hover{
+      opacity:0.7;
+      cursor:pointer;
+}
+
+#form-edit-ad-admin table input[type="text"], #form-edit-ad-admin table input[type="number"]{
+    width:100%;
+}
+
+/*Div that shows a form for an ad update on a seller's profile.*/
+#div-edit-ad-seller{
+    width:90%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: #cac8c8;
+}
+
+#form-edit-ad-seller{
+    width:100%;
+}
+
+#form-edit-ad-seller table{
+    width:80%;
+}
+
+#form-edit-ad-seller input[type="number"],#form-edit-ad-seller input[type="text"], #form-edit-ad-seller textarea{
+    width:100%;
+}
+
+#form-edit-ad-seller textarea{
+    height:5em;
+}
+
+#form-edit-ad-seller input[type="submit"], #form-edit-ad-seller #btnCancelEdit-seller{
+    width:7em;
+    height:2em;
+    margin-left:2em;
+    margin-top:1em;
+    margin-bottom:1em;
+    border-radius: 0.5em;
+    border:none;
+}
+
+#form-edit-ad-seller input[type="submit"]:hover, #form-edit-ad-seller #btnCancelEdit-seller:hover{
+   cursor:pointer;
+   opacity:0.7;
+}
+
+#form-edit-ad-seller input[type="submit"]{
+    background-color: rgba(51, 122, 214, 0.884);
+}
+
+#form-edit-ad-seller #btnCancelEdit-seller{
+    background-color: rgba(206, 54, 54, 0.87);
+}
+
+/*Div that shows a specific user.*/
+#div-user{
+    width:90%;
+    margin-right:auto;
+    margin-left:auto;
+    background-color: #ddd;
+}
+
+#div-user p{
+    margin-left:1em;
+}
+
+#btnBack-detailsUser{
+    width:5em;
+    height:2em;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    margin-left:13em;
+    /*margin-left:25%;*/
+    margin-top:0.5em;
+    border:none;
+}
+#btnBack-detailsUser:hover{
+   opacity:0.7;
+   cursor:pointer;
+}
+
+.clickedFave{
+    opacity:0.7;
+}

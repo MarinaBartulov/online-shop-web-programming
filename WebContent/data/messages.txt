@@ -1,0 +1,46 @@
+{
+  "1" : {
+    "id" : 1,
+    "adName" : "Scottish Fold cat",
+    "sender" : "admin",
+    "roleOfSender" : "Administrator",
+    "title" : "Not Allowed Content",
+    "content" : "Description of this ad is very short. Please make it longer or administrators will deactivate this ad.",
+    "dateTime" : "13/09/2019 06:09:17 PM",
+    "recipient" : "mika",
+    "deleted" : false
+  },
+  "2" : {
+    "id" : 2,
+    "adName" : "Dell Inspiron 3542",
+    "sender" : "pera",
+    "roleOfSender" : "Customer",
+    "title" : "Question about the hard drive",
+    "content" : "Which type of the hard drive does this laptop have?",
+    "dateTime" : "13/09/2019 06:09:17 PM",
+    "recipient" : "mika",
+    "deleted" : false
+  },
+  "3" : {
+    "id" : 3,
+    "adName" : "Tesla Model S (2018)",
+    "sender" : "pera",
+    "roleOfSender" : "Generic",
+    "title" : "Delivered.",
+    "content" : "Your product has been successfully delivered",
+    "dateTime" : "13/09/2019 06:16:51 PM",
+    "recipient" : "mika",
+    "deleted" : false
+  },
+  "4" : {
+    "id" : 4,
+    "adName" : "Tesla Model S (2018)",
+    "sender" : "pera",
+    "roleOfSender" : "Generic",
+    "title" : "Review added",
+    "content" : "Someone has added a review to your ad.",
+    "dateTime" : "13/09/2019 06:17:45 PM",
+    "recipient" : "mika",
+    "deleted" : false
+  }
+}
